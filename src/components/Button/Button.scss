@@ -1,0 +1,50 @@
+@import "../../assets/styles/variables";
+
+.app-button {
+    position: relative;
+    border: none;
+    background-color: $primary-color;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 10px;
+    cursor: pointer;
+    overflow: hidden;
+
+    &__circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: #ffffff;
+        opacity: .3;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        z-index: 1;
+        transition: transform .3s cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+        &--active {
+            opacity: .4;
+            transform: translate(-50%, -50%) scale(3);
+        }
+    }
+
+    &__content {
+        position: relative;
+        z-index: 2;
+    }
+
+    &--small {
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    &--large {
+        padding: 20px;
+    }
+
+    &--block {
+        width: 100%;
+    }
+}
