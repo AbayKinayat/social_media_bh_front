@@ -1,10 +1,11 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 
-import { Login, Registration } from './pages';
-import { AuthLayout } from './layouts';
-import { routes } from './routes';
-import './App.css';
+import { Login, Registration } from "./pages";
+import { AuthLayout } from "./layouts";
+import { routes } from "./routes";
+import { Typography } from "./components";
+import "./App.css";
 
 function App() {
   return (
