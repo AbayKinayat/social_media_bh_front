@@ -14,17 +14,20 @@ interface ButtonProps {
   children: React.ReactNode,
   btnsize?: ButtonSizes,
   block?: boolean,
+  type?: "button" | "submit" | "reset" | undefined
 }
 
 const Button = React.forwardRef<HTMLButtonElement, React.HTMLProps<HTMLButtonElement> & ButtonProps>((
-  {
+  props, ref
+) => {
+  const {
     children,
     btnsize,
     block = false,
-    onClick = () => { }
-  },
-  ref
-) => {
+    className,
+    onClick = () => { },
+  } = props;
+
   const [circleAnimated, setCircleAnimated] = React.useState(false);
 
   const clickHandler = (event: React.MouseEvent<HTMLButtonElement>): void => {
@@ -37,8 +40,12 @@ const Button = React.forwardRef<HTMLButtonElement, React.HTMLProps<HTMLButtonEle
 
   return (
     <button
+      type="button"
+      {...props}
+      ref={ref}
       className={
         classNames("app-button",
+          className,
           {
             "app-button--large": btnsize === "large",
             "app-button--small": btnsize === "small",

@@ -10,12 +10,14 @@ type InputProps = {
 
 
 const Input = React.forwardRef<HTMLInputElement, InputProps & React.HTMLProps<HTMLInputElement>>(
-    ({
-        label,
-        height = 42,
-        value,
-        onChange = () => { }
-    }, ref) => {
+    (props, ref) => {
+        const {
+            label,
+            height = 55,
+            value,
+            className,
+            onChange = () => { }
+        } = props;
         const [inputIsFocused, setInputIsFocused] = React.useState(false);
 
         const focusInInput = () => {
@@ -26,16 +28,17 @@ const Input = React.forwardRef<HTMLInputElement, InputProps & React.HTMLProps<HT
             setInputIsFocused(false);
         }
 
-        return <div className={classNames("app-input", { "app-input--focused": inputIsFocused })} style={{ height }}>
+        return <div className={classNames("app-input", className, { "app-input--focused": inputIsFocused })} style={{ height }}>
             <label className={classNames("app-input__label", { "app-input__label--active": inputIsFocused })}>{label}</label>
             <input
                 type="text"
-                className="app-input__textfield" 
                 ref={ref}
                 value={value}
                 onChange={onChange}
                 onFocus={focusInInput}
                 onBlur={blurInInput}
+                {...props}
+                className="app-input__textfield" 
             />
         </div>
     })

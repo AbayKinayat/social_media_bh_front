@@ -4,7 +4,6 @@ import { Route, Routes } from "react-router-dom";
 import { Login, Registration } from "./pages";
 import { AuthLayout } from "./layouts";
 import { routes } from "./routes";
-import { Typography } from "./components";
 import "./App.css";
 
 function App() {
@@ -13,7 +12,7 @@ function App() {
       <Routes>
         <Route path={routes.auth.path} element={<AuthLayout />}>
           <Route path={routes.login.path} element={<Login />} />
-          <Route path={routes.registration.path} element={<Registration />} />
+          <Route path={routes.registration.genereteFullPath()} element={<Registration />} />
         </Route>
       </Routes>
     </div>

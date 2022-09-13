@@ -2,19 +2,22 @@
 
 .app-login {
     display: flex;
-    width: 50%;
+    align-items: stretch;
+    width: 70%;
 
     &__news {
         flex: 1;
         background-color: $primary-color;
-        height: 100%;
         padding: 146px 32px;
     }
 
     &__form-container {
         flex: 1;
         background-color: $secondary-color;
-        height: 100%;
         padding: 146px 32px;
+    }
+
+    &__title {
+        font-weight: 700;
     }
 }

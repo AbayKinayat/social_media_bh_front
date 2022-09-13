@@ -1,0 +1,23 @@
+@import "../../assets/styles/variables";
+
+.app-registration {
+    display: flex;
+    align-items: stretch;
+    width: 70%;
+
+    &__welcome {
+        flex: 1;
+        background-color: $primary-color;
+        padding: 146px 32px;
+    }
+
+    &__form-container {
+        flex: 1;
+        background-color: $secondary-color;
+        padding: 146px 32px;
+    }
+
+    &__title {
+        font-weight: 700;
+    }
+}
