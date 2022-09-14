@@ -6,6 +6,8 @@ import "./Input.scss";
 type InputProps = {
     label?: string;
     height?: string;
+    error?: boolean;
+    helperText?: string
 }
 
 
@@ -16,7 +18,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps & React.HTMLProps<HT
             height = 55,
             value,
             className,
-            onChange = () => { }
+            onChange = () => { },
+            onBlur = () => { }
         } = props;
         const [inputIsFocused, setInputIsFocused] = React.useState(false);
 
@@ -24,23 +27,30 @@ const Input = React.forwardRef<HTMLInputElement, InputProps & React.HTMLProps<HT
             setInputIsFocused(true);
         }
 
-        const blurInInput = () => {
+        const blurInInput = (event: React.FocusEvent<HTMLInputElement>) => {
             setInputIsFocused(false);
+            onBlur(event);
         }
 
-        return <div className={classNames("app-input", className, { "app-input--focused": inputIsFocused })} style={{ height }}>
-            <label className={classNames("app-input__label", { "app-input__label--active": inputIsFocused })}>{label}</label>
-            <input
-                type="text"
-                ref={ref}
-                value={value}
-                onChange={onChange}
-                onFocus={focusInInput}
-                onBlur={blurInInput}
-                {...props}
-                className="app-input__textfield" 
-            />
-        </div>
+        return <>
+            <div className={classNames("app-input", className, { "app-input--focused": inputIsFocused, "input-error": props.error })} style={{ height, marginBottom: 4 }}>
+                <label className={classNames("app-input__label", { "app-input__label--active": inputIsFocused, "error--text": props.error })}>{label}</label>
+                <input
+                    type="text"
+                    ref={ref}
+                    value={value}
+                    onChange={onChange}
+                    {...props}
+                    onFocus={focusInInput}
+                    onBlur={blurInInput}
+                    className={"app-input__textfield"}
+                />
+            </div>
+            {
+                props.helperText &&
+                <small className={classNames({ "error--text": props.error })} >{props.helperText}</small>
+            }
+        </>
     })
 
 export default Input;

@@ -11,3 +11,11 @@
 .white--text {
   color: $white-color;
 }
+
+.error--text {
+  color: $error-color;
+}
+
+.input-error {
+  border-bottom: 2px solid $error-color;
+}
