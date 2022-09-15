@@ -21,19 +21,29 @@ const initialState: AuthState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {
-    [registration.fulfilled.name]: (state, action: PayloadAction<IUser>) => {
-      state.user = action.payload;
-      state.authLoading = false;
-      state.authSuccess = true;
-    },
-    [registration.pending.name]: (state) => {
-      state.authLoading = true;
-    },
-    [registration.rejected.name]: (state) => {
-      state.authLoading = false;
-      state.authSuccess = false;
-    }
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(
+      registration.fulfilled,
+      (state, action: PayloadAction<IUser>) => {
+        state.user = action.payload;
+        state.authLoading = false;
+        state.authSuccess = true;
+      }
+    )
+    builder.addCase(
+      registration.pending,
+      (state) => {
+        state.authLoading = true;
+      }
+    )
+    builder.addCase(
+      registration.rejected,
+      (state) => {
+        state.authLoading = false;
+        state.authSuccess = false;
+      }
+    )
   }
 })
 

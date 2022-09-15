@@ -4,14 +4,14 @@ import { IUser } from "../../../models";
 import { AuthPayload } from "../../../models/AuthPayload";
 import { CreateUser } from "../../../models/CreateUser";
 
-export const registration = createAsyncThunk("registration", async (values: CreateUser, thunkApi) => {
+export const registration = createAsyncThunk("auth/registration", async (values: CreateUser, thunkApi) => {
   try {
     const {
       data: {
         user,
         accessToken
       }
-    } = await $api.post<AuthPayload>("/auth/registration", values);
+    } = await $api.post<AuthPayload>("/auth/local/registration", values);
 
     localStorage.setItem("token", accessToken);
     return user;

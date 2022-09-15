@@ -6,3 +6,4 @@ export { default as Typography } from "./Typography";
 export { default as Welcome } from "./Welcome";
 export { default as StepList } from "./StepList";
 export { default as StepItem } from "./StepItem";
+export { default as Loading } from "./Loading";

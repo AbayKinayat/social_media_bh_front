@@ -7,7 +7,7 @@ type InputProps = {
     label?: string;
     height?: string;
     error?: boolean;
-    helperText?: string
+    helperText?: any
 }
 
 

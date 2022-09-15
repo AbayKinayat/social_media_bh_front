@@ -8,7 +8,7 @@ interface InputPasswordProps {
   label?: string;
   height?: string;
   error?: boolean;
-  helperText?: string;
+  helperText?: any;
 }
 
 const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordProps & React.HTMLProps<HTMLInputElement>>((props, ref) => {

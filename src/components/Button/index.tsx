@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from "classnames";
 
 import "./Button.scss";
+import Loading from '../Loading';
 
 const OButtonSizes = {
   LARGE: "large",
@@ -14,7 +15,8 @@ interface ButtonProps {
   children: React.ReactNode,
   btnsize?: ButtonSizes,
   block?: boolean,
-  type?: "button" | "submit" | "reset" | undefined
+  type?: "button" | "submit" | "reset" | undefined;
+  loading?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, React.HTMLProps<HTMLButtonElement> & ButtonProps>((
@@ -25,6 +27,7 @@ const Button = React.forwardRef<HTMLButtonElement, React.HTMLProps<HTMLButtonEle
     btnsize,
     block = false,
     className,
+    loading,
     onClick = () => { },
   } = props;
 
@@ -49,15 +52,22 @@ const Button = React.forwardRef<HTMLButtonElement, React.HTMLProps<HTMLButtonEle
           {
             "app-button--large": btnsize === "large",
             "app-button--small": btnsize === "small",
-            "app-button--block": block
+            "app-button--block": block,
+            "app-button--loading": loading
           }
         )}
       onClick={clickHandler}
     >
-      <div className={classNames("app-button__circle", { "app-button__circle--active": circleAnimated })}></div>
-      <div className="app-button__content">
-        {children}
-      </div>
+      {
+        loading ? <Loading
+          size={"small"}
+        /> : <>
+          <div className={classNames("app-button__circle", { "app-button__circle--active": circleAnimated })}></div>
+          <div className="app-button__content">
+            {children}
+          </div>
+        </>
+      }
     </button>
   )
 })

@@ -1,6 +1,8 @@
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { AnyObject, Maybe } from "yup/lib/types";
+import useAppDispatch from "../useAppDispatch";
+import { registration } from "../../app/slices/AuthSlice/actionCreators";
 
 declare module 'yup' {
   interface StringSchema<
@@ -13,6 +15,8 @@ declare module 'yup' {
 }
 
 const useRegistration = () => {
+
+  const dispatch = useAppDispatch();
 
   yup.addMethod(yup.string, "passwordCopy", function () {
     return this.test({
@@ -31,6 +35,7 @@ const useRegistration = () => {
       passwordRepeat: ""
     },
     onSubmit(values) {
+      dispatch(registration(values));
     },
     validationSchema: yup.object({
       firstName: yup
