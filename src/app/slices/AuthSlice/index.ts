@@ -13,7 +13,7 @@ interface AuthState {
 const initialState: AuthState = {
   user: null,
   authLoading: false,
-  refreshLoading: false,
+  refreshLoading: true,
   authSuccess: false,
   refreshSuccess: false,
 }
@@ -90,21 +90,21 @@ const authSlice = createSlice({
       refresh.fulfilled,
       (state, action: PayloadAction<IUser>) => {
         state.user = action.payload;
-        state.authLoading = false;
-        state.authSuccess = true;
+        state.refreshLoading = false;
+        state.refreshSuccess = true;
       }
     )
     builder.addCase(
       refresh.pending,
       (state) => {
-        state.authLoading = true;
+        state.refreshLoading = true;
       }
     )
     builder.addCase(
       refresh.rejected,
       (state) => {
-        state.authLoading = false;
-        state.authSuccess = false;
+        state.refreshLoading = false;
+        state.refreshSuccess = false;
       }
     )
   }
