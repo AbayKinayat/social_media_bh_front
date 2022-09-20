@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { IUser } from "../../../models";
-import { registration } from "./actionCreators";
+import { authorization, registration } from "./actionCreators";
 
 interface AuthState {
   user: IUser | null,
@@ -39,6 +39,27 @@ const authSlice = createSlice({
     )
     builder.addCase(
       registration.rejected,
+      (state) => {
+        state.authLoading = false;
+        state.authSuccess = false;
+      }
+    )
+    builder.addCase(
+      authorization.fulfilled,
+      (state, action: PayloadAction<IUser>) => {
+        state.user = action.payload;
+        state.authLoading = false;
+        state.authSuccess = true;
+      }
+    )
+    builder.addCase(
+      authorization.pending,
+      (state) => {
+        state.authLoading = true;
+      }
+    )
+    builder.addCase(
+      authorization.rejected,
       (state) => {
         state.authLoading = false;
         state.authSuccess = false;
