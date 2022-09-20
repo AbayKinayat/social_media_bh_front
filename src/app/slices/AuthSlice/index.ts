@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { IUser } from "../../../models";
-import { authorization, registration } from "./actionCreators";
+import { authorization, logout, refresh, registration } from "./actionCreators";
 
 interface AuthState {
   user: IUser | null,
@@ -60,6 +60,48 @@ const authSlice = createSlice({
     )
     builder.addCase(
       authorization.rejected,
+      (state) => {
+        state.authLoading = false;
+        state.authSuccess = false;
+      }
+    )
+    builder.addCase(
+      logout.fulfilled,
+      (state, action: PayloadAction<null>) => {
+        state.user = action.payload;
+        state.authLoading = false;
+        state.authSuccess = true;
+      }
+    )
+    builder.addCase(
+      logout.pending,
+      (state) => {
+        state.authLoading = true;
+      }
+    )
+    builder.addCase(
+      logout.rejected,
+      (state) => {
+        state.authLoading = false;
+        state.authSuccess = false;
+      }
+    )
+    builder.addCase(
+      refresh.fulfilled,
+      (state, action: PayloadAction<IUser>) => {
+        state.user = action.payload;
+        state.authLoading = false;
+        state.authSuccess = true;
+      }
+    )
+    builder.addCase(
+      refresh.pending,
+      (state) => {
+        state.authLoading = true;
+      }
+    )
+    builder.addCase(
+      refresh.rejected,
       (state) => {
         state.authLoading = false;
         state.authSuccess = false;

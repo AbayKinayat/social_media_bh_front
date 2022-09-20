@@ -3,10 +3,17 @@ import { Route, Routes } from "react-router-dom";
 
 import { Login, Registration } from "./pages";
 import { AuthLayout } from "./layouts";
+import { useAppDispatch } from "./hooks";
 import { routes } from "./routes";
+import { refresh } from "./app/slices/AuthSlice/actionCreators";
 import "./App.css";
 
 function App() {
+  const dispatch = useAppDispatch();
+  React.useEffect(() => {
+    dispatch(refresh());
+  }, [])
+
   return (
     <div>
       <Routes>

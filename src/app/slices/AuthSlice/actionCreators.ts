@@ -33,3 +33,26 @@ export const authorization = createAsyncThunk("auth/authorization", async (value
     return thunkApi.rejectWithValue(e.message);
   }
 })
+
+export const logout = createAsyncThunk("auth/logout", async (_, thunkApi) => {
+  try {
+    await $api.post("/auth/logout");
+    localStorage.removeItem("token");
+    return null;
+  } catch(e: any) {
+    return thunkApi.rejectWithValue(e.message);
+  }
+})
+
+export const refresh = createAsyncThunk("auth/refresh", async (_, thunkApi) => {
+  try {
+    const { data: {
+      accessToken,
+      user
+    } } = await $api.post<AuthPayload>("/auth/refresh");
+    localStorage.setItem("token", accessToken);
+    return user;
+  } catch(e: any) {
+    return thunkApi.rejectWithValue(e.message);
+  }
+})
