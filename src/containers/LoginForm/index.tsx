@@ -13,7 +13,6 @@ const LoginForm: React.FC = () => {
     if (authSuccess)
         navigate("/")
 
-
     return (
         <form onSubmit={formik.handleSubmit}>
             <Row>

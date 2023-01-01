@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { refresh } from '../../app/slices/AuthSlice/actionCreators';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import Loading from '../Loading';
 
 interface PrivateRouteProps {
   children: React.ReactNode
@@ -17,7 +16,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
   const token = localStorage.getItem("token") || "";
 
   React.useEffect(() => {
-    if (!user) {
+    if (!user && token) {
       dispatch(refresh());
     }
   }, [])

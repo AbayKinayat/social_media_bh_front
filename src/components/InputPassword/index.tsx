@@ -17,8 +17,11 @@ const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordProps & Re
     height = 55,
     value,
     className,
+    helperText,
+    error,
     onChange = () => { },
-    onBlur = () => { }
+    onBlur = () => { },
+    ...otherProps
   } = props;
   const [typeIsPassword, setTypeIsPassword] = React.useState(true);
   const [inputIsFocused, setInputIsFocused] = React.useState(false);
@@ -53,7 +56,7 @@ const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordProps & Re
               "app-input__label",
               {
                 "app-input__label--active": inputIsFocused,
-                "error--text": props.error
+                "error--text": error
               }
             )}
         >
@@ -63,7 +66,7 @@ const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordProps & Re
           ref={ref}
           value={value}
           onChange={onChange}
-          {...props}
+          {...otherProps}
           onFocus={focusInInput}
           onBlur={blurInInput}
           type={typeIsPassword ? "password" : "text"}
@@ -80,8 +83,8 @@ const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordProps & Re
       </Button>
     </div >
     {
-      props.helperText &&
-      <small className={classNames({ "error--text": props.error })} >{props.helperText}</small>
+      helperText &&
+      <small className={classNames({ "error--text": error })} >{helperText}</small>
     }
   </>
 })

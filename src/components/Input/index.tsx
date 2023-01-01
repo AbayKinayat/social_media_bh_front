@@ -19,7 +19,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps & React.HTMLProps<HT
             value,
             className,
             onChange = () => { },
-            onBlur = () => { }
+            onBlur = () => { },
+            helperText,
+            error,
+            ...otherProps
         } = props;
         const [inputIsFocused, setInputIsFocused] = React.useState(false);
 
@@ -40,15 +43,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps & React.HTMLProps<HT
                     ref={ref}
                     value={value}
                     onChange={onChange}
-                    {...props}
+                    {...otherProps}
                     onFocus={focusInInput}
                     onBlur={blurInInput}
                     className={"app-input__textfield"}
                 />
             </div>
             {
-                props.helperText &&
-                <small className={classNames({ "error--text": props.error })} >{props.helperText}</small>
+                helperText &&
+                <small className={classNames({ "error--text": error })} >{helperText}</small>
             }
         </>
     })

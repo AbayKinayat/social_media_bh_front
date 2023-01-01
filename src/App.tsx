@@ -23,13 +23,10 @@ function App() {
           path={"/private"}
           element={
             <PrivateRoute>
-              <Private />
+              
             </PrivateRoute>}
         />
-
-
         <Route path={routes.auth.path} element={<AuthLayout />}>
-
           <Route path={routes.login.path} element={<Login />} />
           <Route path={routes.registration.genereteFullPath()} element={<Registration />} />
         </Route>

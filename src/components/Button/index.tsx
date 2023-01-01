@@ -29,6 +29,7 @@ const Button = React.forwardRef<HTMLButtonElement, React.HTMLProps<HTMLButtonEle
     className,
     loading,
     onClick = () => { },
+    ...otherProps
   } = props;
 
   const [circleAnimated, setCircleAnimated] = React.useState(false);
@@ -44,7 +45,7 @@ const Button = React.forwardRef<HTMLButtonElement, React.HTMLProps<HTMLButtonEle
   return (
     <button
       type="button"
-      {...props}
+      {...otherProps}
       ref={ref}
       className={
         classNames("app-button",
