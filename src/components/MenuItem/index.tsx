@@ -1,11 +1,15 @@
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import "./MenuItem.scss";
 
-const MenuItem: FC = () => {
+interface MenuItemProps {
+  children: ReactNode
+}
+
+const MenuItem: FC<MenuItemProps> = ({ children }) => {
   return (
     <li className="menu-item">
-
+      {children}
     </li>
   )
 }
