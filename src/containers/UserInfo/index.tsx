@@ -26,6 +26,7 @@ const UserInfo: FC = () => {
       anchorEl={anchorEl}
       isOpen={menuIsOpen}
       onClose={handleCloseMenu}
+      className="user-info-menu"
     >
       <MenuItem>
         Настройка

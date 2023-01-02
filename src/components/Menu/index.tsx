@@ -1,13 +1,12 @@
-import { type FC, type ReactNode, useState, useEffect } from 'react';
+import React, { type FC, type ReactNode, useState, useEffect } from 'react';
 import classNames from 'classnames';
 
 import Portal from '../Portal';
 import "./Menu.scss";
 
-interface MenuProps {
+interface MenuProps extends React.HTMLAttributes<HTMLDivElement> {
   anchorEl: HTMLElement | null,
   isOpen: boolean,
-  className?: string,
   onClose?: () => void,
   children: ReactNode,
 }
@@ -17,7 +16,8 @@ const Menu: FC<MenuProps> = ({
   isOpen,
   className = "",
   onClose = () => { },
-  children
+  children,
+  ...otherProps
 }) => {
   const [position, setPosition] = useState({ left: 0, top: 0 })
 
@@ -31,7 +31,7 @@ const Menu: FC<MenuProps> = ({
   return (
     <Portal wrapperId="portal-root">
       <div className={classNames("background-overlay", { active: isOpen })} onClick={onClose}></div>
-      <div style={{ top: position.top, left: position.left }} className={classNames("menu", className, { "menu--active": isOpen })}>
+      <div {...otherProps} style={{ top: position.top, left: position.left }} className={classNames("menu", className, { "menu--active": isOpen })} >
         <ul className="menu__list">
           {children}
         </ul>
