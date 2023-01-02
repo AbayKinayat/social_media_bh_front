@@ -1,6 +1,7 @@
 @import "../../assets/styles/variables";
 
 .app-button {
+    $self: &;
     position: relative;
     border: none;
     background-color: $primary-color;
@@ -26,6 +27,14 @@
 
         &--active {
             opacity: .4;
+            transform: translate(-50%, -50%) scale(3);
+        }
+    }
+
+    &:focus {
+        outline: none;
+        #{$self}__circle {
+            opacity: .2;
             transform: translate(-50%, -50%) scale(3);
         }
     }

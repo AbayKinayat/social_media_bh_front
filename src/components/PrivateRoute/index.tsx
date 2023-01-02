@@ -16,7 +16,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
   const token = localStorage.getItem("token") || "";
 
   React.useEffect(() => {
-    if (!user && token) {
+    if (!user) {
       dispatch(refresh());
     }
   }, [])
@@ -24,10 +24,9 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
   React.useEffect(() => {
     if (!refreshLoading) {
       if (!token || !user) {
-        navigate("/");
+        navigate("/auth/login");
       }
     }
-
   }, [user, refreshLoading])
 
   return (

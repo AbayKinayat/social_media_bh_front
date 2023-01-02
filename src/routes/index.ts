@@ -16,5 +16,5 @@ export const routes = {
     auth: {
         path: "/auth",
         name: "Авторизация"
-    }
+    },
 }

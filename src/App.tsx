@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { Login, Registration } from "./pages";
@@ -6,13 +6,14 @@ import { AuthLayout } from "./layouts";
 import { useAppDispatch } from "./hooks";
 import { routes } from "./routes";
 import { refresh } from "./app/slices/AuthSlice/actionCreators";
-import "./App.css";
 import { PrivateRoute } from "./components";
-import Private from "./pages/Private";
+import Home from "./pages/Home";
+import Main from "./layouts/Main";
+import "./App.css";
 
 function App() {
   const dispatch = useAppDispatch();
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(refresh());
   }, [])
 
@@ -20,12 +21,15 @@ function App() {
     <div>
       <Routes>
         <Route
-          path={"/private"}
+          path={"/"}
           element={
             <PrivateRoute>
-              
-            </PrivateRoute>}
-        />
+              <Main />
+            </PrivateRoute>
+          }
+        >
+          <Route path="" element={<Home />} />
+        </Route>
         <Route path={routes.auth.path} element={<AuthLayout />}>
           <Route path={routes.login.path} element={<Login />} />
           <Route path={routes.registration.genereteFullPath()} element={<Registration />} />
