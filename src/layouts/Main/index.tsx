@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import Sidebar from "../../components/Sidebar";
+import { ListItem, Sidebar } from "../../components";
 
 import { MainHeader } from "../../containers";
 import "./Main.scss";
@@ -19,7 +19,18 @@ const Main = () => {
           position="left"
           className="main-sidebar"
         >
-          
+          <ListItem>
+            Главная
+          </ListItem>
+          <ListItem>
+            Канбан
+          </ListItem>
+          <ListItem>
+            Профиль
+          </ListItem>
+          <ListItem>
+            Чат
+          </ListItem>
         </Sidebar>
         <Outlet />
       </main>
