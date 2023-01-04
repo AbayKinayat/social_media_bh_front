@@ -1,14 +1,14 @@
-import type { FC, ReactNode } from 'react';
+import type { FC, HTMLAttributes, ReactNode } from 'react';
 
 import "./MenuItem.scss";
 
-interface MenuItemProps {
+interface MenuItemProps extends HTMLAttributes<HTMLLIElement> {
   children: ReactNode
 }
 
-const MenuItem: FC<MenuItemProps> = ({ children }) => {
+const MenuItem: FC<MenuItemProps> = ({ children, className = "", ...otherProps }) => {
   return (
-    <li className="menu-item">
+    <li {...otherProps} className={`menu-item ${className}`}>
       {children}
     </li>
   )

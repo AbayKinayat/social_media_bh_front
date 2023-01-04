@@ -1,10 +1,13 @@
 import { FC, useState } from 'react';
+
 import { Button, Menu, MenuItem } from '../../components';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { logout } from '../../app/slices/AuthSlice/actionCreators';
 
 import "./UserInfo.scss";
 
 const UserInfo: FC = () => {
+  const dispatch = useAppDispatch();
   const { user } = useAppSelector(state => state.auth);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -16,6 +19,10 @@ const UserInfo: FC = () => {
 
   const handleCloseMenu = () => {
     setAnchorEl(null);
+  }
+
+  const handleLogoutClick = () => {
+    dispatch(logout());
   }
 
   return <>
@@ -31,7 +38,9 @@ const UserInfo: FC = () => {
       <MenuItem>
         Настройка
       </MenuItem>
-      <MenuItem>
+      <MenuItem
+        onClick={handleLogoutClick}
+      >
         Выйти
       </MenuItem>
     </Menu>
