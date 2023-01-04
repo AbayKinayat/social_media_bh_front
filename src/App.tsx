@@ -10,6 +10,9 @@ import { PrivateRoute } from "./components";
 import Home from "./pages/Home";
 import Main from "./layouts/Main";
 import "./App.css";
+import Canban from "./pages/Canban";
+import Profile from "./pages/Profile";
+import Chat from "./pages/Chat";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -29,6 +32,9 @@ function App() {
           }
         >
           <Route path="" element={<Home />} />
+          <Route path="canban" element={<Canban />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="chat" element={<Chat />} />
         </Route>
         <Route path={routes.auth.path} element={<AuthLayout />}>
           <Route path={routes.login.path} element={<Login />} />

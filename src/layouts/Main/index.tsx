@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
-import { ListItem, Sidebar } from "../../components";
+import { NavLink, Outlet } from "react-router-dom";
+import { List, ListItem, Sidebar } from "../../components";
 
 import { MainHeader } from "../../containers";
 import "./Main.scss";
+
+const navLinkClassName = ({ isActive }: { isActive: boolean }) => isActive ? "main-layout__link main-layout__link--active" : "main-layout__link"
 
 const Main = () => {
 
@@ -19,18 +21,30 @@ const Main = () => {
           position="left"
           className="main-sidebar"
         >
-          <ListItem>
-            Главная
-          </ListItem>
-          <ListItem>
-            Канбан
-          </ListItem>
-          <ListItem>
-            Профиль
-          </ListItem>
-          <ListItem>
-            Чат
-          </ListItem>
+          <nav>
+            <List>
+              <NavLink to="/" className={navLinkClassName}>
+                <ListItem>
+                  Главная
+                </ListItem>
+              </NavLink>
+              <NavLink to="/canban" className={navLinkClassName}>
+                <ListItem>
+                  Канбан
+                </ListItem>
+              </NavLink>
+              <NavLink to="/profile" className={navLinkClassName}>
+                <ListItem>
+                  Профиль
+                </ListItem>
+              </NavLink>
+              <NavLink to="/chat" className={navLinkClassName}>
+                <ListItem>
+                  Чат
+                </ListItem>
+              </NavLink>
+            </List>
+          </nav>
         </Sidebar>
         <Outlet />
       </main>

@@ -1,14 +1,32 @@
 .list-item {
-  list-style: none;
-  &__btn {
-    padding: 15px 15px;
-    cursor: pointer;
-    border-radius: 10px;
-    border: none;
-    margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 15px 15px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 10px;
+  transition: background .2s ease-in;
 
-    &:focus {
-      outline: none;
+  &.white {
+    &:hover {
+      background: rgba(255, 255, 255, 0.8);
     }
+  }
+
+  &.primary {
+    &:hover {
+      background: rgba(226, 93, 93, 0.8);
+    }
+  }
+
+  &.secondary {
+    &:hover {
+      background: rgb(82, 82, 82);
+    }
+  }
+
+  &:focus {
+    outline: none;
   }
 }

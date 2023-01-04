@@ -1,9 +1,28 @@
+@import "../../assets/styles/variables";
+
 .main-layout {
   height: 100%;
 
   &__content {
     height: 100%;
     display: flex;
+  }
+
+  &__link {
+    >button {
+      width: 100%;
+    }
+
+    &--active {
+      >button {
+        background: $primary-color;
+        color: $white-color;
+
+        &:hover {
+          background: rgba(226, 93, 93, 0.8) !important;
+        }
+      }
+    }
   }
 }
 

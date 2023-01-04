@@ -9,11 +9,9 @@ interface ListItemProps {
 
 const ListItem: FC<ListItemProps> = ({ children, color = "white" }) => {
   return (
-    <li className={`list-item ${color}`}>
-      <button className="list-item__btn">
-        {children}
-      </button>
-    </li >
+    <button className={`list-item ${color}`}>
+      {children}
+    </button>
   )
 }
 
