@@ -30,11 +30,11 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
   }, [user, refreshLoading])
 
   return (
-    <div>
+    <>
       {
         (refreshSuccess || authSuccess) && children
       }
-    </div>
+    </>
   )
 }
 

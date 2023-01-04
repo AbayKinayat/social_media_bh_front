@@ -18,7 +18,7 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <>
       <Routes>
         <Route
           path={"/"}
@@ -35,7 +35,7 @@ function App() {
           <Route path={routes.registration.genereteFullPath()} element={<Registration />} />
         </Route>
       </Routes>
-    </div>
+    </>
   );
 }
 

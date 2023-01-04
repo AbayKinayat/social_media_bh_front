@@ -1,0 +1,17 @@
+.sidebar {
+  $self: &;
+  padding: 10px;
+  transition: transform .5s ease;
+
+  &--right {
+    transform: translateX(100%);
+  }
+
+  &--left {
+    transform: translateX(-100%);
+  }
+
+  &.sidebar--is-open {
+    transform: translateX(0);
+  }
+}
