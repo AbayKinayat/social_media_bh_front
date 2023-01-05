@@ -14,7 +14,7 @@ const Main = () => {
   return (
     <div className="main-layout">
       <MainHeader />
-      <main className="main-layout__content">
+      <div className="main-layout__content">
         <Sidebar
           isOpen={sidebarIsOpen}
           color="secondary"
@@ -46,8 +46,10 @@ const Main = () => {
             </List>
           </nav>
         </Sidebar>
-        <Outlet />
-      </main>
+        <main className="main-layout__main-content">
+          <Outlet />
+        </main>
+      </div>
     </div>
   )
 }

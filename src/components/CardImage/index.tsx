@@ -1,12 +1,12 @@
 import type { FC, HTMLAttributes } from 'react';
 
-import "./Card.scss";
+import "./CardImage.scss";
 
 interface CardImageProps extends HTMLAttributes<HTMLDivElement> {
   src?: string,
   alt?: string,
   height?: string | number
-  ImageProps: HTMLAttributes<HTMLImageElement>
+  ImageProps?: HTMLAttributes<HTMLImageElement>
 }
 
 const CardImage: FC<CardImageProps> = ({

@@ -3,6 +3,10 @@
 .main-layout {
   height: 100%;
 
+  &__main-content {
+    padding: 20px;
+  }
+
   &__content {
     height: 100%;
     display: flex;

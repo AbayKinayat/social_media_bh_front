@@ -1,14 +1,14 @@
-import type { FC, ReactNode } from 'react';
+import type { FC, HTMLAttributes, ReactNode } from 'react';
 
 import "./CardBody.scss";
 
-interface CardBodyProps {
-  children?: ReactNode
+interface CardBodyProps extends HTMLAttributes<HTMLDivElement> {
+  children?: ReactNode,
 }
 
-const CardBody: FC<CardBodyProps> = ({ children }) => {
+const CardBody: FC<CardBodyProps> = ({ children, className = "", ...otherProps }) => {
   return (
-    <div className="card-body">
+    <div {...otherProps} className={`card-body ${className}`}>
       {children}
     </div>
   )

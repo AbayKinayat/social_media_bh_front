@@ -1,0 +1,8 @@
+@import "../../assets/styles/variables";
+.user-card {
+  color: $secondary-color;
+
+  &__goal-name {
+    margin-bottom: 2px;
+  }
+}

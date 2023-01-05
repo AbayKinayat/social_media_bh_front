@@ -1,6 +1,6 @@
-@use "../../assets/styles/variables" as variables;
+@import "../../assets/styles/variables";
 
 .card {
-  border: 1px solid variables.$secondary-color;
+  border: 1px solid $secondary-color;
   border-radius: 5px;
 }

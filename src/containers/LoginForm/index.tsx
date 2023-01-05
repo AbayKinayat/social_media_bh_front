@@ -1,10 +1,10 @@
-import React from 'react'
+import type { FC } from 'react'
 import { Col, Row } from 'react-grid-system';
 import { useNavigate } from 'react-router-dom';
 import { Button, Input, InputPassword } from '../../components'
 import { useAppSelector, useLogin } from '../../hooks';
 
-const LoginForm: React.FC = () => {
+const LoginForm: FC = () => {
 
     const { authLoading, authSuccess } = useAppSelector(state => state.auth);
     const [formik] = useLogin();
