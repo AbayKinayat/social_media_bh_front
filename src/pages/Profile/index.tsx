@@ -1,15 +1,21 @@
-import type { FC } from "react";
+import { type FC, useEffect } from "react";
 import { Col, Row } from "react-grid-system";
+import { fetchSexs } from "../../app/slices/SexSlice/actionCreators";
 import { Card, CardBody, SkeletonField } from "../../components";
 import { UserDescriptionCard } from "../../containers";
 import UserCard from "../../containers/UserCard";
-import { useAppSelector } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 
 import "./Profile.scss";
 
 const Profile: FC = () => {
 
   const { user } = useAppSelector(state => state.auth);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchSexs());
+  }, []);
 
   return (
     user ?
