@@ -1,0 +1,19 @@
+.profile {
+
+  &_left {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content;
+    gap: 20px;
+  }
+}
+
+.test-card {
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content;
+    gap: 10px;
+  }
+}

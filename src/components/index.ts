@@ -16,3 +16,4 @@ export { default as Sidebar } from "./Sidebar";
 export { default as Card } from "./Card";
 export { default as CardBody } from "./CardBody";
 export { default as CardImage } from "./CardImage";
+export { default as SkeletonField } from "./SkeletonField";
