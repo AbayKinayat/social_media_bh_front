@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { Col, Row } from "react-grid-system";
 import { Card, CardBody, SkeletonField } from "../../components";
+import { UserDescriptionCard } from "../../containers";
 import UserCard from "../../containers/UserCard";
 import { useAppSelector } from "../../hooks";
 
@@ -11,39 +12,42 @@ const Profile: FC = () => {
   const { user } = useAppSelector(state => state.auth);
 
   return (
-    <Row className="profile">
-      <Col className="profile_left">
-        {
-          user &&
+    user ?
+      <Row className="profile">
+        <Col className="profile_left" xs="content">
           <UserCard
             user={user}
             userImage=""
           />
-        }
-        <Card className="test-card">
-          <CardBody className="test-card__body">
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-            <SkeletonField />
-          </CardBody>
-        </Card>
+          <Card className="test-card">
+            <CardBody className="test-card__body">
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+              <SkeletonField />
+            </CardBody>
+          </Card>
 
-      </Col>
-    </Row>
+        </Col>
+        <Col className="profile_right">
+          <UserDescriptionCard
+            user={user}
+          />
+        </Col>
+      </Row> : null
   )
 }
 

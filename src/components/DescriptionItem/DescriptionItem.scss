@@ -1,0 +1,14 @@
+.description-item {
+  display: flex;
+
+  &__label {
+    &::after {
+      display: inline;
+      content: ":"
+    }
+  }
+
+  &__value {
+    margin-left: 10px;
+  }
+}

@@ -7,7 +7,7 @@ export interface IUser {
   sexId?: number
   secondName?: string
   phone?: string
-  dateBirth?: Date
+  dateBirth?: string
   isBan: boolean
   // sex: Sex;
   // avatar: Avatars

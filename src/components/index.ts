@@ -17,3 +17,5 @@ export { default as Card } from "./Card";
 export { default as CardBody } from "./CardBody";
 export { default as CardImage } from "./CardImage";
 export { default as SkeletonField } from "./SkeletonField";
+export { default as Descriptions } from "./Descriptions";
+export { default as DescriptionItem } from './DescriptionItem';
