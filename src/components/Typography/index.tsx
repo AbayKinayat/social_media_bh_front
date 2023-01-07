@@ -126,7 +126,7 @@ const Typography: React.FC<TypographyProps> = ({
   children,
   className = "",
   style = {},
-  color = "secondary",
+  color = "dark",
   fontWeight = 400
 }) => {
   return (

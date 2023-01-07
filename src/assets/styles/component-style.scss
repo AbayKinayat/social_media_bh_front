@@ -16,6 +16,10 @@
   color: $error-color;
 }
 
+.dark--text {
+  color: $dark-color;
+}
+
 .input-error {
   border-bottom: 2px solid $error-color;
 }
