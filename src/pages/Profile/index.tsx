@@ -1,7 +1,7 @@
 import { type FC, useEffect } from "react";
 import { Col, Row } from "react-grid-system";
 import { fetchSexs } from "../../app/slices/SexSlice/actionCreators";
-import { Card, CardBody, SkeletonField } from "../../components";
+import { Card, CardBody, SkeletonField, Tab, Tabs } from "../../components";
 import { UserDescriptionCard } from "../../containers";
 import UserCard from "../../containers/UserCard";
 import { useAppDispatch, useAppSelector } from "../../hooks";
@@ -52,6 +52,14 @@ const Profile: FC = () => {
           <UserDescriptionCard
             user={user}
           />
+          <Tabs>
+            <Tab name="Посты">
+              Посты
+            </Tab>
+            <Tab name="Фотографии">
+              Фотографии
+            </Tab>
+          </Tabs>
         </Col>
       </Row> : null
   )

@@ -1,11 +1,11 @@
 import type { Dispatch, SetStateAction } from "react"
 
-export interface TabsHeaderItem {
+export interface ITabsHeaderItem {
   name: string
 }
 
 export interface TabsContextProps {
-  tabsHeaderItems: TabsHeaderItem[]
+  tabsHeaderItems: ITabsHeaderItem[]
   tabsActiveIndex: number
-  setTabsHeaderItems: Dispatch<SetStateAction<TabsHeaderItem[]>>
+  setTabsHeaderItems: Dispatch<SetStateAction<ITabsHeaderItem[]>>
 }

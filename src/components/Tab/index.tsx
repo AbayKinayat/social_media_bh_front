@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState, type FC, type ReactNode } from 'react'
 import { TabsContext } from '../Tabs';
-import { TabsHeaderItem } from '../Tabs/models';
+import { ITabsHeaderItem } from '../Tabs/models';
 
 interface TabProps {
   children?: ReactNode,
   name: string
 }
 
-const findHeaderItem = (headerItems: TabsHeaderItem[], name: string): number | -1 => {
+const findHeaderItem = (headerItems: ITabsHeaderItem[], name: string): number | -1 => {
   return headerItems.findIndex(headerItem => headerItem.name.toLowerCase() === name.toLowerCase());
 }
 
@@ -21,7 +21,7 @@ const Tab: FC<TabProps> = ({ children, name }) => {
   const createTabHeaderAndSetIndex = () => {
     const tabHeaderIndex = findHeaderItem(tabsHeaderItems, name);
 
-    if (!tabHeaderIndex) {
+    if (tabHeaderIndex === -1) {
       setTabsHeaderItems([...tabsHeaderItems, { name }]);
       setTabIndex(tabsHeaderItems.length);
     } else {

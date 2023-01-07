@@ -1,0 +1,1 @@
+export type IAppColor = "primary" | "secondary" | "white" | "transparent"

@@ -1,11 +1,16 @@
 import { createContext, useCallback, useMemo, useState, type FC, type ReactNode } from 'react'
 import classNames from "classnames";
 
-import { TabsContextProps, TabsHeaderItem } from './models';
+import { TabsContextProps, ITabsHeaderItem } from './models';
+import { IAppColor } from '../../models/IAppColor';
+import TabsHeaderItem from "./TabsHeaderItem";
 import "./Tabs.scss";
 
 interface TabsProps {
-  children: ReactNode
+  children?: ReactNode,
+  headerColor?: IAppColor,
+  backgroundColor?: IAppColor,
+  activeColor?: IAppColor
 }
 
 export const TabsContext = createContext<TabsContextProps>({
@@ -14,10 +19,15 @@ export const TabsContext = createContext<TabsContextProps>({
   setTabsHeaderItems: () => { }
 });
 
-const Tabs: FC<TabsProps> = ({ children }) => {
+const Tabs: FC<TabsProps> = ({
+  children,
+  headerColor = "transparent",
+  activeColor = "primary",
+  backgroundColor = "secondary"
+}) => {
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const [headerItems, setHeaderItems] = useState<TabsHeaderItem[]>([]);
+  const [headerItems, setHeaderItems] = useState<ITabsHeaderItem[]>([]);
 
   const value = useMemo<TabsContextProps>(() => {
     return {
@@ -36,13 +46,18 @@ const Tabs: FC<TabsProps> = ({ children }) => {
   return (
     <TabsContext.Provider value={value}>
       <div className="tabs">
-        <div className="tabs-header">
+        <div className={classNames("tabs-header", backgroundColor)}>
           {
-            headerItems.map(({ name }, index) => {
-              return <div className={classNames("tabs-header__item", {  'tabs-header__item--active': activeIndex === index })} onClick={headerItemClickHandler.bind(null, index)}>
-                {name}
-              </div>
-            })
+            headerItems.map(({ name }, index) => (
+              <TabsHeaderItem
+                key={name}
+                name={name}
+                isActive={activeIndex === index}
+                onClick={headerItemClickHandler.bind(null, index)}
+                color={headerColor}
+                activeColor={activeColor}
+              />
+            ))
           }
         </div>
         {children}

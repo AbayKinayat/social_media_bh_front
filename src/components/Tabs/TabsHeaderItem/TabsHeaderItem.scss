@@ -1,0 +1,10 @@
+.tabs-header-item {
+  border: none;
+  cursor: pointer;
+  padding: 12px 40px;
+  transition: .2s ease;
+
+  &:focus {
+    outline: none;
+  }
+}
