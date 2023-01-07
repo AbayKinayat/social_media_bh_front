@@ -34,6 +34,9 @@ const UserDescriptionCard: FC<UserDescriptionCardProps> = ({ user }) => {
           <DescriptionItem label="Email">
             {user.email}
           </DescriptionItem>
+          <DescriptionItem label="Телефон">
+            {user.phone}
+          </DescriptionItem>
         </Descriptions>
       </CardBody>
     </Card>
