@@ -1,12 +1,12 @@
 import type { FC } from 'react';
 
 import { Card, CardBody, CardImage, Typography } from '../../components';
-import { IUser } from '../../models';
+import { ICurrentUser } from '../../models';
 import NoUserImage from "../../assets/images/no-user.png";
 import "./UserCard.scss";
 
 interface UserCardProps {
-  user: IUser,
+  user: ICurrentUser,
   userImage?: string
 }
 

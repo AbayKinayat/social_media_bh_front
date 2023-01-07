@@ -1,7 +1,7 @@
-import { IUser } from "./IUser";
+import { ICurrentUser } from "./ICurrentUser";
 
 export interface AuthPayload {
-  user: IUser,
+  user: ICurrentUser,
   accessToken: string;
   refreshToken: string;
 }

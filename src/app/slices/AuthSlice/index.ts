@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { IUser } from "../../../models";
+import { ICurrentUser } from "../../../models";
 import { authorization, logout, refresh, registration } from "./actionCreators";
 
 interface AuthState {
-  user: IUser | null,
+  user: ICurrentUser | null,
   authLoading: boolean;
   refreshLoading: boolean;
   authSuccess: boolean;
@@ -25,7 +25,7 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(
       registration.fulfilled,
-      (state, action: PayloadAction<IUser>) => {
+      (state, action: PayloadAction<ICurrentUser>) => {
         state.user = action.payload;
         state.authLoading = false;
         state.authSuccess = true;
@@ -46,7 +46,7 @@ const authSlice = createSlice({
     )
     builder.addCase(
       authorization.fulfilled,
-      (state, action: PayloadAction<IUser>) => {
+      (state, action: PayloadAction<ICurrentUser>) => {
         state.user = action.payload;
         state.authLoading = false;
         state.authSuccess = true;
@@ -88,7 +88,7 @@ const authSlice = createSlice({
     )
     builder.addCase(
       refresh.fulfilled,
-      (state, action: PayloadAction<IUser>) => {
+      (state, action: PayloadAction<ICurrentUser>) => {
         state.user = action.payload;
         state.refreshLoading = false;
         state.refreshSuccess = true;

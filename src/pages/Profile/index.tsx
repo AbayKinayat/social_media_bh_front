@@ -3,6 +3,7 @@ import { Col, Row } from "react-grid-system";
 import { fetchSexs } from "../../app/slices/SexSlice/actionCreators";
 import { Card, CardBody, SkeletonField, Tab, Tabs } from "../../components";
 import { UserDescriptionCard } from "../../containers";
+import ProfilePosts from "../../containers/ProfilePosts";
 import UserCard from "../../containers/UserCard";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 
@@ -54,7 +55,7 @@ const Profile: FC = () => {
           />
           <Tabs>
             <Tab name="Посты">
-              Посты
+              <ProfilePosts />
             </Tab>
             <Tab name="Фотографии">
               Фотографии

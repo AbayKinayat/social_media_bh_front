@@ -2,11 +2,11 @@ import type { FC } from 'react'
 
 import { Card, CardBody, DescriptionItem, Descriptions } from '../../components';
 import { useAppSelector } from '../../hooks';
-import { IUser } from '../../models';
+import { ICurrentUser } from '../../models';
 import "./UserDescriptionCard.scss";
 
 interface UserDescriptionCardProps {
-  user: IUser
+  user: ICurrentUser
 }
 
 const UserDescriptionCard: FC<UserDescriptionCardProps> = ({ user }) => {
