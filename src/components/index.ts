@@ -19,3 +19,5 @@ export { default as CardImage } from "./CardImage";
 export { default as SkeletonField } from "./SkeletonField";
 export { default as Descriptions } from "./Descriptions";
 export { default as DescriptionItem } from './DescriptionItem';
+export { default as Tabs } from "./Tabs";
+export { default as Tab } from "./Tab";
