@@ -1,0 +1,17 @@
+.input-empty {
+  background: inherit;
+  border: none;
+  padding: 10px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &_default {
+    font-size: 16px;
+  }
+
+  &_title {
+    font-size: 18px;
+  }
+}

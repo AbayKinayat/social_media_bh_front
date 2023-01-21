@@ -1,0 +1,27 @@
+.content-area {
+  position: relative;
+
+  &__placeholder {
+    top: 0;
+    left: 0;
+    position: absolute;
+    
+    width: 100%;
+    color: #999999;
+    cursor: text;
+
+    padding: 10px;
+  }
+
+  &__control {
+    padding: 10px;
+
+    * {
+      line-height: 20px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

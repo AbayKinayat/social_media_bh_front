@@ -1,0 +1,37 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity .3s ease-in-out;
+
+  &__content {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform .3s ease-in-out;
+    transform: scale(0);
+  }
+
+  &.exit {
+    opacity: 0;
+  }
+
+  &.exit &__content {
+    transform: scale(0);
+  }
+
+  &.enter-done {
+    opacity: 1;
+  }
+
+  &.enter-done &__content {
+    transform: scale(1);
+  }
+
+}
